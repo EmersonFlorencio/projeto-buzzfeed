@@ -1,0 +1,29 @@
+<main class="quizz-container">
+  <div class="quizz-logo">
+    <img src="./assets/imgs/logo.png" alt="">
+    <h2>{{ title }}</h2>
+  </div>
+
+  @if (!finished) {
+  <div class="quizz-questions">
+    <h3>{{ questionSelected.question }}</h3>
+  </div>
+  }
+
+  @if (!finished) {
+  <div class="quizz-options">
+    @for (option of questionSelected.options; track questionSelected.options.id) {
+    <button (click)="playerChoose(option.alias)" class="btn-options">
+      {{ option.name }}
+    </button>
+    }
+  </div>
+  }
+
+  @if(finished) {
+  <div class="quizz-results">
+    <h1>O Seu resultado:</h1>
+    <p>{{ answerSelected }}</p>
+  </div>
+  }
+</main>
